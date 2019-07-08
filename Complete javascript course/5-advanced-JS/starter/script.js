@@ -29,7 +29,7 @@ mark.calculateAge();
 console.log(john.name, john.lastName);
 console.log(jane.name, jane.lastName);
 console.log(mark.name, mark.lastName);
-*/
+
 ///////////////////////////////////////////////////////////////////////
 var Person = function(
   name,
@@ -110,3 +110,57 @@ console.log(corey);
 console.log(kobe);
 console.log(kelvin);
 tyrell.calculateAge();
+
+
+// Object.create
+
+var personProto = {
+  calculateAge: function() {
+    console.log(2019 - this.yearOfBirth);
+  }
+};
+
+var mark = Object.create(personProto);
+(mark.name = "Mark"), (mark.yearOfBirth = 1986), (mark.job = "Bin Man");
+
+var lucy = Object.create(personProto, {
+  name: { value: "Lucy" },
+  yearOfBirth: { value: 1992 },
+  job: { value: "Personal Assistant" }
+});
+*/
+
+// Primitives vs objects.
+var a = 23;
+var b = a;
+a = 46;
+
+console.log(a);
+console.log(b);
+
+var obj1 = {
+  name: "Mary",
+  age: 26
+};
+
+//Objects
+var obj2 = obj1;
+obj1.age = 30;
+console.log(obj1.age);
+console.log(obj2.age);
+
+//Functions
+var age = 27;
+var obj = {
+  name: "Jonas",
+  city: "Lison"
+};
+
+function change(a, b) {
+  a = 30;
+  b.city = "San Fransisco";
+}
+
+change(age, obj);
+console.log(age);
+console.log(obj.city);
