@@ -128,7 +128,7 @@ var lucy = Object.create(personProto, {
   yearOfBirth: { value: 1992 },
   job: { value: "Personal Assistant" }
 });
-*/
+
 
 // Primitives vs objects.
 var a = 23;
@@ -164,3 +164,15 @@ function change(a, b) {
 change(age, obj);
 console.log(age);
 console.log(obj.city);
+*/
+/////////////////////////////////////////////////
+//Passing functions as an argument.
+
+var years = [1990, 1965, 1937, 2006, 2011];
+
+function arrayCalc(arr, fn) {
+  var arrRes = [];
+  for (var i = 0; i < arr.length; i++){
+    arrRes.push(fn(arr[i]));
+  }
+}
