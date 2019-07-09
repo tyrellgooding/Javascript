@@ -164,7 +164,7 @@ function change(a, b) {
 change(age, obj);
 console.log(age);
 console.log(obj.city);
-*/
+
 /////////////////////////////////////////////////
 //Passing functions as an argument.
 
@@ -172,7 +172,62 @@ var years = [1990, 1965, 1937, 2006, 2011];
 
 function arrayCalc(arr, fn) {
   var arrRes = [];
-  for (var i = 0; i < arr.length; i++){
+  for (var i = 0; i < arr.length; i++) {
     arrRes.push(fn(arr[i]));
   }
+  return arrRes;
 }
+
+function calculateAge(el) {
+  return 2019 - el;
+}
+
+function isFullAge(el) {
+  return el >= 18;
+}
+
+function maxHeartRate(el) {
+  if (el >= 18 && el <= 81) {
+    return Math.round(206.9 - 0.67 * el);
+  } else {
+    return -1;
+  }
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullAges = arrayCalc(ages, isFullAge);
+var rates = arrayCalc(ages, maxHeartRate);
+
+console.log(ages);
+console.log(rates);
+*/
+//////////////////////////////////////////////////
+// Functions returing functions
+
+function interviewQuestion(job) {
+  if (job === "designer") {
+    return function (name) {
+      console.log(name + ", Can you please explain what UX desgin is?");
+    };
+  } else if (job === "teacher") {
+    return function (name) {
+      console.log("What subject do you teach, " + name + "?");
+    };
+  } else if (job === "builder") {
+    return function (name) {
+      console.log(name + ', how long have you been a builder?')
+    }
+  } else {
+    return function (name) {
+      console.log('Hello ' + name + ', what do you do?');
+    }
+  }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+var builderQuestion = interviewQuestion('builder');
+teacherQuestion('Daniel');
+designerQuestion('Daniel');
+builderQuestion('Jordan')
+interviewQuestion()('Mark');
