@@ -200,7 +200,7 @@ var rates = arrayCalc(ages, maxHeartRate);
 
 console.log(ages);
 console.log(rates);
-*/
+
 //////////////////////////////////////////////////
 // Functions returing functions
 
@@ -231,3 +231,144 @@ teacherQuestion('Daniel');
 designerQuestion('Daniel');
 builderQuestion('Jordan')
 interviewQuestion()('Mark');
+
+
+//////////////////////////////////////////////////
+//IIFE
+
+function game() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
+
+game();
+
+
+(function (goodLuck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+
+})();
+
+(function (goodLuck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5 - goodLuck);
+
+})(5);
+
+
+//////////////////////////////////////////////////
+// Closures
+
+function retirement(retirementAge) {
+  var a = " years left until retirement.";
+  return function(yearOfBirth) {
+    var age = 2019 - yearOfBirth;
+    console.log(retirementAge - age + a);
+  };
+}
+
+var retirementUS = retirement(66);
+var retirementGER = retirement(65);
+var retirementICE = retirement(67);
+
+retirementGER(1990);
+retirementICE(1990);
+retirementUS(1990);
+
+function interviewQuestion(job) {
+  return function(name) {
+    if (job === "software developer") {
+      console.log(name + ", what was the last project you worked on?");
+    } else if (job === "teacher") {
+      console.log(name + ", how many years have you been teaching for?");
+    } else {
+      console.log(name + ", what is your dream job?");
+    }
+  };
+}
+
+interviewQuestion("teacher")("John");
+interviewQuestion("software developer")("Daniel");
+interviewQuestion("")("Mark");
+*/
+
+//////////////////////////////////////////////////
+// Bind, call and apply
+
+var king = {
+  name: "King Bueris",
+  age: 26,
+  job: "King of the country",
+  presentation: function(style, timeOfDay) {
+    if (style === "formal king") {
+      console.log(
+        "Hello all of my people, good " +
+          timeOfDay +
+          ". Today I'm going to dicuss what will change in this city." +
+          " I " +
+          this.name +
+          " the " +
+          this.job +
+          ", will be the youngest king to bring order at the age of " +
+          this.age +
+          "."
+      );
+    } else if (style === "informal king") {
+      console.log(
+        "All of you people, this " +
+          timeOfDay +
+          " will be charged an extra 20% tax. Those who do not pay will be dealt with." +
+          " I " +
+          this.name +
+          " the " +
+          this.job +
+          ", will be the richest king at the age of " +
+          this.age +
+          "."
+      );
+    } else if (style === "formal queen") {
+      console.log(
+        "Hello all of my people, good " +
+          timeOfDay +
+          ". Today I'm going to dicuss what will change in this city." +
+          " I " +
+          this.name +
+          " the " +
+          this.job +
+          ", will be the youngest queen to bring order at the age of " +
+          this.age +
+          "."
+      );
+    } else if (style === "informal queen") {
+      console.log(
+        "All of you people, this " +
+          timeOfDay +
+          " will be charged an extra 90% tax. Those who do not pay will be dealt with." +
+          " I " +
+          this.name +
+          " the " +
+          this.job +
+          ", will be the richest queen at the age of " +
+          this.age +
+          "."
+      );
+    }
+  }
+};
+
+var emily = {
+  name: "Emily",
+  age: 35,
+  job: "Queen of the country"
+};
+
+king.presentation("formal king", "morning");
+king.presentation.call(emily, "formal queen", "evening");
+king.presentation.apply(emily, ["informal queen", "morning"]);
+
+var kingFormal = king.presentation.bind(king, "formal king");
+kingFormal("morning");
+
+var emilyInformal = emily.presentation.bind(emily, "informal queen");
+emilyInformal("afternoon");
