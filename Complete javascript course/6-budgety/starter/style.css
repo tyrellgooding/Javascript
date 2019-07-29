@@ -49,7 +49,7 @@ body {
 .budget {
     position: absolute;
     width: 350px;
-    top: 30%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(0, 0, 0);
@@ -196,19 +196,24 @@ body {
 /***** LISTS *****/
 
 .container {
-    width: 1000px;
-    margin: 60px auto;
+    width: 100%;
+    margin: 20px auto;
+    position: absolute;
+    top: 1px;
+    background-position: top;
 }
 
 .income {
-    float: left;
+    padding-left: 10%;
     width: 475px;
     margin-right: 50px;
 }
 
 .expenses {
-    float: left;
+    padding-left: 80%;
+    margin-right: 50px;
     width: 475px;
+    top: 20px;
 }
 
 h2 {
