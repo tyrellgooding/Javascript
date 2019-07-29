@@ -41,7 +41,6 @@ body {
 
 .top {
     height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(back.png);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -50,10 +49,10 @@ body {
 .budget {
     position: absolute;
     width: 350px;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .budget__title {
@@ -71,9 +70,11 @@ body {
     letter-spacing: 2px;
 }
 
-.budget__income, .budget__expenses {
+.budget__income,
+.budget__expenses {
     padding: 12px;
     text-transform: uppercase;
+    border-radius: 15px;
 }
 
 .budget__income {
@@ -85,19 +86,22 @@ body {
     background-color: #FF5049;
 }
 
-.budget__income--text, .budget__expenses--text {
+.budget__income--text,
+.budget__expenses--text {
     float: left;
     font-size: 13px;
     color: #444;
     margin-top: 2px;
 }
 
-.budget__income--value, .budget__expenses--value {
+.budget__income--value,
+.budget__expenses--value {
     letter-spacing: 1px;
     float: left;
 }
 
-.budget__income--percentage, .budget__expenses--percentage {
+.budget__income--percentage,
+.budget__expenses--percentage {
     float: left;
     width: 34px;
     font-size: 11px;
@@ -120,7 +124,8 @@ body {
 .add {
     padding: 14px;
     border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
+    border-top: 1px solid #e7e7e7;
+    background-color: #ffffff;
 }
 
 .add__container {
@@ -140,7 +145,8 @@ body {
     transition: border 0.3s;
 }
 
-.add__description, .add__value {
+.add__description,
+.add__value {
     border: 1px solid #e7e7e7;
     background-color: #fff;
     color: inherit;
@@ -176,7 +182,9 @@ body {
     transform: translateY(2px);
 }
 
-.add__type:focus, .add__description:focus, .add__value:focus {
+.add__type:focus,
+.add__description:focus,
+.add__value:focus {
     outline: none;
     border: 1px solid #28B9B5;
 }
@@ -252,11 +260,14 @@ h2 {
     text-align: center;
 }
 
-.income .item__value, .income .item__delete--btn {
+.income .item__value,
+.income .item__delete--btn {
     color: #28B9B5;
 }
 
-.expenses .item__value, .expenses .item__percentage, .expenses .item__delete--btn {
+.expenses .item__value,
+.expenses .item__percentage,
+.expenses .item__delete--btn {
     color: #FF5049;
 }
 
