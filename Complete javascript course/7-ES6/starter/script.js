@@ -167,6 +167,8 @@ var friends = ["Bob", "Jim", "Bert"];
 new Person("Sam").myFriends6(friends);
 */
 
+/*
+
 // Destructuring
 
 //ES5
@@ -174,7 +176,7 @@ var jim = ["Jim", 26];
 // var name = jim[0];
 // var age = jim[1];
 
-//ES6
+//ES6 Destructed data stucture
 const [name, age] = ["Tyrell", 23];
 console.log(name);
 console.log(age);
@@ -184,10 +186,16 @@ const obj = {
   lastName: "Smith"
 };
 
-const { firstName, lastName } = obj;
+const {
+  firstName,
+  lastName
+} = obj;
 console.log(`${firstName} ${lastName}`);
 
-const { firstName: a, lastName: b } = obj;
+const {
+  firstName: a,
+  lastName: b
+} = obj;
 console.log(a);
 console.log(b);
 
@@ -199,3 +207,213 @@ function calcAgeRetirement(year) {
 const [age2, retirement] = calcAgeRetirement(1996);
 console.log(age2);
 console.log(retirement);
+*/
+
+
+// Arrays 
+/*
+const boxes = document.querySelectorAll('.box');
+
+
+//ES5 - To change nodelist to an array.
+var boxesArr5 =
+  Array.prototype.slice.call(boxes);
+boxesArr5.forEach(function (cur) {
+  cur.style.backgroundColor = 'dodgerblue';
+});
+
+//ES6
+const boxesArr6 = Array.from(boxes);
+Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+//ES5 for loop 
+/*
+for (var i = 0; i < boxesArr5.length; i++) {
+
+  if (boxesArr5[i].className === 'box blue') {
+    //continue;
+  }
+  boxesArr5[i].textContent = 'I changed to Blue!';
+}
+
+
+
+//ES6 for loop
+for (const cur of boxesArr6) {
+  if (cur.className.includes('blue') === 'box blue') {
+    continue;
+  }
+  cur.textContent = 'I changed to Blue!';
+}
+
+
+
+//ES5 
+var ages = [12, 17, 8, 21, 14, 11];
+
+var full = ages.map(function (cur) {
+
+  return cur >= 18;
+
+});
+
+console.log(full);
+console.log(full.indexOf(true));
+console.log(ages[full.indexOf(true)]);
+
+//ES6
+console.log(ages.findIndex(cur => cur >= 18));
+console.log(ages.find(cur => cur >= 18));
+*/
+
+// Spread Operator
+/*
+function addFourAges(a, b, c, d) {
+  return a + b + c + d;
+}
+
+var sum1 = addFourAges(21, 18, 9, 56);
+console.log(sum1);
+
+//ES5
+var ages = [21, 18, 9, 56];
+var sum2 = addFourAges.apply(null, ages);
+console.log(sum2);
+
+//ES6 ... = spread operator - expands and selects all componenets in the array.
+const sum3 = addFourAges(...ages);
+
+console.log(sum3);
+
+const familyGooding = ['Tyrell', 'Kobe', ' Corey', 'Otis', 'Vicky'];
+const familyButler = ['Clare', 'Amber', 'Mango'];
+
+const wholeFamily = [...familyButler, ...familyGooding];
+console.log(wholeFamily);
+
+
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+const all = [h, ...boxes];
+Array.from(all).forEach(cur => cur.style.color = 'purple');
+*/
+
+// Rest parameters
+/*
+//ES5
+
+function isFullAge5() {
+
+  console.log(arguments);
+  var argsArr = Array.prototype.slice.call(arguments);
+
+  argsArr.forEach(function (cur) {
+
+    console.log(2019 - cur >= 18);
+
+  });
+}
+
+//isFullAge5(1990, 1995, 2002, 1982, 2014);
+
+
+//ES6
+function isFullAge6(...years) {
+  years.forEach(cur => console.log(2019 - cur <= 18));
+}
+
+isFullAge6(1990, 1995, 2002, 1982, 2014);
+
+
+//ES5
+function isFullAge5(limit) {
+
+  //console.log(arguments);
+  var argsArr = Array.prototype.slice.call(arguments, 1);
+  argsArr.forEach(function (cur) {
+
+    //console.log(2019 - cur >= 18);
+
+  });
+}
+
+isFullAge5(1990, 1995, 2002, 1982, 2014);
+
+
+//ES6
+function isFullAge6(limit, ...years) {
+  years.forEach(cur => console.log(2019 - cur <= limit));
+}
+
+isFullAge6(1990, 1995, 2002, 1982, 2014);
+
+
+//Default Parameters
+//ES5
+// function BulterPerson(firstName, yearOfBirth, lastName, nationality) {
+//   lastName === undefined ? lastName = 'Bulter' : lastName = lastName;
+//   nationality === undefined ? nationality = 'British' : nationality = nationality;
+
+//   this.firstName = firstName;
+//   this.yearOfBirth = yearOfBirth;
+//   this.lastName = lastName;
+//   this.nationality = nationality;
+
+// }
+
+// var Clare = new BulterPerson('Clare', 1972);
+// var Amber = new BulterPerson('Amber', 1997, 'Butler', 'British & Jamacian Mix');
+// var Mango = new BulterPerson('Mango', 2018, 'Gooding')
+
+// console.log(BulterPerson);
+
+
+//ES6
+
+function GoodingPerson(firstName, yearOfBirth, lastName = 'Gooding', nationality = 'British') {
+
+  this.firstName = firstName;
+  this.yearOfBirth = yearOfBirth;
+  this.lastName = lastName;
+  this.nationality = nationality;
+}
+
+var kobe = new GoodingPerson('Kobe', 1999);
+*/
+
+
+//Maps
+/*
+const question = new Map();
+question.set('question 1', 'What year is it?');
+question.set(1, 2019);
+question.set(2, 2012);
+question.set(3, 1996);
+question.set(4, 1901);
+question.set('Correct', 1);
+question.set(true, 'Correct answer :D');
+question.set(false, 'Wrong answer, please try again!');
+
+console.log(question.get('question 1'));
+//console.log(question.size);
+
+if (question.has(4)) {
+  //   //Delete key from map
+  //   //question.delete(4);
+}
+
+//Clears map
+//question.clear();
+
+//question.forEach((value, key) => console.log(`This is ${key}, and it's set to: ${value}. `));
+for (let [key, value] of question.entries()) {
+
+  if (typeof (key) === 'number') {
+    console.log(`Answer ${key}:${value}`);
+
+  }
+};
+
+const ans = parseInt(prompt('Write the correct answer:'));
+console.log(question.get(ans === question.get('Correct')));
+*/
