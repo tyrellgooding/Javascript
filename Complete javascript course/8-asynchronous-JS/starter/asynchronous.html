@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Asynchronous JavaScript</title>
 </head>
+
 <body>
     <h1>Asynchronous JavaScript</h1>
     <script>
-        
+        // const second = () => {
+
+        //     setTimeout(() => {
+        //         console.log('Delayed with async!')
+        //     }, 2000);
+
+        // }
+        // const first = () => {
+
+        //     console.log('First');
+        //     second();
+        //     console.log('The End');
+
+        // };
+
+        // first();
+
+        function getRecipie() {
+
+            setTimeout(() => {
+                const recipeID = [523, 156, 432, 985];
+                console.log(recipeID);
+                setTimeout(id => {
+                    const recipe = {
+                        title: 'Chicken & Rice',
+                        Publisher: 'Tyrell Gooding'
+                    };
+                    console.log(`${id}: ${recipe.title}.`);
+
+                    setTimeout(Publisher => {
+                            const recipe2 = {
+                                title: 'Beef Stew',
+                                Publisher: 'Tyrell Gooding'
+                            };
+                            console.log(`${id}: ${recipe2.title}.`);
+                        },
+
+                        1500, recipe.Publisher);
+                }, 1000, recipeID[1])
+            }, 1500);
+
+        }
+
+        getRecipie();
     </script>
 </body>
+
 </html>
