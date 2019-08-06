@@ -28,33 +28,131 @@
 
         // first();
 
-        function getRecipie() {
+        // function getRecipie() {
 
-            setTimeout(() => {
-                const recipeID = [523, 156, 432, 985];
-                console.log(recipeID);
-                setTimeout(id => {
-                    const recipe = {
-                        title: 'Chicken & Rice',
-                        Publisher: 'Tyrell Gooding'
-                    };
-                    console.log(`${id}: ${recipe.title}.`);
+        //     setTimeout(() => {
+        //         const recipeID = [523, 156, 432, 985];
+        //         console.log(recipeID);
+        //         setTimeout(id => {
+        //             const recipe = {
+        //                 title: 'Chicken & Rice',
+        //                 Publisher: 'Tyrell Gooding'
+        //             };
+        //             console.log(`${id}: ${recipe.title}.`);
 
-                    setTimeout(Publisher => {
-                            const recipe2 = {
-                                title: 'Beef Stew',
-                                Publisher: 'Tyrell Gooding'
-                            };
-                            console.log(`${id}: ${recipe2.title}.`);
-                        },
+        //             setTimeout(Publisher => {
+        //                     const recipe2 = {
+        //                         title: 'Beef Stew',
+        //                         Publisher: 'Tyrell Gooding'
+        //                     };
+        //                     console.log(`${id}: ${recipe2.title}.`);
+        //                 },
 
-                        1500, recipe.Publisher);
-                }, 1000, recipeID[1])
-            }, 1500);
+        //                 1500, recipe.Publisher);
+        //         }, 1000, recipeID[1])
+        //     }, 1500);
+
+        // }
+
+        // getRecipie();
+
+        // const getIDs = new Promise((resolve, reject) => {
+
+        //     setTimeout(() => {
+        //         resolve([523, 156, 432, 985]);
+        //     }, 1500);
+        // });
+
+
+        // const getRecipe = recID => {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(ID => {
+        //             const recipe = {
+        //                 title: 'Chicken & Rice',
+        //                 Publisher: 'Tyrell Gooding'
+        //             };
+        //             resolve(`${ID}: ${recipe.title}.`);
+        //         }, 1500, recID)
+        //     });
+        // };
+
+
+        // const getRelated = publisher => {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout((pub) => {
+        //             const recipe = {
+        //                 title: 'Beef Stew',
+        //                 Publisher: 'Tyrell Gooding'
+        //             };
+        //             resolve(`${pub}: ${recipe.title}`);
+        //         }, 1500, publisher);
+        //     })
+        // };
+
+        // getIDs.then(IDs => {
+        //         console.log(IDs)
+        //         // getRecipe will return a promise.
+        //         return getRecipe(IDs[2])
+        //     })
+        //     //Then will handle the result of the resolved promise ^. 
+        //     .then(recipe => {
+        //         console.log(recipe);
+        //         return getRelated('Tyrell');
+        //     })
+        //     .then(recipe => {
+        //         console.log(recipe);
+        //     })
+        //     .catch(error => {
+        //         console.log('Error!')
+        //     });
+
+
+        //This function will continue to run in the background.
+        // async function getRecipiesAW() {
+        //     const IDs = await getIDs;
+        //     console.log(IDs);
+        //     const recipe = await getRecipe(IDs[2]);
+        //     console.log(recipe);
+        //     const related = await getRelated('Tyrell');
+        //     console.log(related);
+
+        // }
+
+        // getRecipiesAW();
+
+        //AJAX call with fetch - with promise and then.
+        function getWeather(woeid) {
+            fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
+                .then(result => {
+                    //console.log(result);
+                    return result.json();
+                })
+                .then(data => {
+                    //console.log(data);
+                    const today = data.consolidated_weather[0];
+                    console.log(`Temperatures today in ${data.title} stay between ${today.min_temp} and ${today.max_temp}.`);
+                })
+                .catch(error => console.log(error));
+        };
+        getWeather(44418);
+
+
+        async function getWeatherAW(woeid) {
+            try {
+                const result = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`);
+                const data = await result.json();
+                const tomorrow = data.consolidated_weather[0];
+                console.log(`Temperatures tomorrow in ${data.title} stay between ${tomorrow.min_temp} and ${tomorrow.max_temp}.`);
+                return data;
+            } catch (error) {
+                console.log(error);
+            }
 
         }
-
-        getRecipie();
+        getWeatherAW(44418).then(data => {
+            dataLondon = data
+            console.log(dataLondon);
+        });
     </script>
 </body>
 
