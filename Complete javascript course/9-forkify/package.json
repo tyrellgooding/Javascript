@@ -1,0 +1,14 @@
+{
+  "name": "9-forkify",
+  "version": "1.0.0",
+  "description": "forkify project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyrell Gooding",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.39.1"
+  }
+}
