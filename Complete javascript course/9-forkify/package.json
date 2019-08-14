@@ -1,14 +1,25 @@
 {
-  "name": "9-forkify",
+  "name": "forkify",
   "version": "1.0.0",
-  "description": "forkify project",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "author": "Tyrell Gooding",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.39.1"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }
