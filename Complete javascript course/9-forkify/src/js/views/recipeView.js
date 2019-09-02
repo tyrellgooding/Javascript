@@ -6,6 +6,11 @@ import {
     Fraction
 } from 'fractional';
 
+
+export const clearRecipe = () => {
+    elements.recipe.innerHTML = '';
+};
+
 const formatCount = count => {
     if (count) {
         const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));
@@ -34,9 +39,6 @@ const createIngredient = ingredient => `
      </li>
 `;
 
-export const clearRecipe = () => {
-    elements.recipe.innerHTML = '';
-}
 export const renderRecipe = recipe => {
     const markup = `
 
@@ -120,12 +122,11 @@ export const renderRecipe = recipe => {
 };
 
 export const updateServingsIngredients = recipe => {
-    //Update Counts 
+    //Update servings 
     document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
     //Update ingredients
-    const countElements = Array.from(document.querySelectorAll('.recipe++count'));
+    const countElements = Array.from(document.querySelectorAll('.recipe__count'));
     countElements.forEach((el, i) => {
-        el.textContent = formatCount(recipe.ingredient[i])
-
+        el.textContent = formatCount(recipe.ingredients[i].count);
     });
 };

@@ -13,6 +13,7 @@ export const clearResults = () => {
 
 };
 
+//highlights the selected recipe.
 export const highlightSelected = id => {
     const resultsArr = Array.from(document.querySelectorAll('results__link'));
     resultsArr.forEach(el => {
