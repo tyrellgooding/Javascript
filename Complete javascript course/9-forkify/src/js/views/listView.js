@@ -18,13 +18,12 @@ export const renderItem = item => {
                </li>
     
     `;
-    elements.shopping.insertAdjacentHTML('befoeend');
-
+    elements.shopping.insertAdjacentHTML('beforeend', markup);
 };
 
 export const deleteItem = id => {
 
-    const item = document.querySelector(`[date-itemid="${id}"]`)
+    const item = document.querySelector(`[data-itemid="${id}"]`)
     item.parentElement.removeChild(item);
 
 };
